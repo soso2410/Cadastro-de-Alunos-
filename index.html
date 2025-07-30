@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="row mb-3 mt-3">
-                            <label for="SelectCurse" class="col-sm-2 col-form-label">Curso:</label>
+                            <label class="col-sm-2 col-form-label">Curso:</label>
                             <div class="col-sm-6">
                                 <select class="form-select" aria-label="Selecione uma categoria" id="SelectCurse">
                                     <option selected>Escolha:</option>
@@ -57,7 +57,7 @@
                             </div>
                         </div>
                         <div class="row mb-3 mt-3 align-items-center">
-                            <label for="inputCheck" class="col-sm-2 col-form-label">Turno:</label>
+                            <label for="inputTurno" class="col-sm-2 col-form-label">Turno:</label>
                             <div class="col-sm-10">
                                 <div>
                                     <input class="form-check-input " type="radio" name="radioDefault"
@@ -88,9 +88,43 @@
 
         </section>
         <hr>
-        <section class="display-6">
-            Alunos Cadastrados:
-        </section>
+        <section>
+            <div class="display-6">
+                Alunos Cadastrados:
+            </div>
+            <div class="row">
+                <div class="col-md-10 offset-md-1 mt-4">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Telefone</th>
+                                <th scope="col">Curso</th>
+                                <th scope="col">Turno</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Sophia Amorim</td>
+                                <td>sophiavfa@gmail.com</td>
+                                <td>(12)991495485</td>
+                                <td>TI</td>
+                                <td>Noturno</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Pedro Vieira</td>
+                                <td>pedrovieiradecarv@gmail.com</td>
+                                <td>(12)345678901</td>
+                                <td>Direito</td>
+                                <td>Manhã</td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
     </main>
 
     <footer class="bg-secondary text-center text-white fixed-bottom">
