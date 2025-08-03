@@ -4,12 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cadastro de Produtos</title>
+    <title>Cadastro de Alunos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-
 </head>
 
 <body>
@@ -27,9 +26,9 @@
                 <div class="col-md-10 offset-md-1">
                     <form>
                         <div class="row mb-3 mt-3">
-                            <label for="inputNome" class="col-sm-2 col-form-label">Nome:</label>
+                            <label for="inputName" class="col-sm-2 col-form-label">Nome:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputNome">
+                                <input type="text" class="form-control" id="inputName">
                             </div>
                         </div>
 
@@ -39,7 +38,7 @@
                                 <input type="email" class="form-control" id="inputEmail">
                             </div>
 
-                            <label for="inputTel" class="col-sm-2 col-form-label">Telefone :</label>
+                            <label for="tel" class="col-sm-2 col-form-label">Telefone :</label>
                             <div class="col-sm-4">
                                 <input type="tel" class="form-control" id="tel">
                             </div>
@@ -48,7 +47,7 @@
                         <div class="row mb-3 mt-3">
                             <label class="col-sm-2 col-form-label">Curso:</label>
                             <div class="col-sm-6">
-                                <select class="form-select" aria-label="Selecione uma categoria" id="SelectCurse">
+                                <select class="form-select" aria-label="Selecione o seu curso" id="Selectcourse">
                                     <option selected>Escolha:</option>
                                     <option value="1"> Direito</option>
                                     <option value="2"> TI</option>
@@ -60,32 +59,25 @@
                             <label for="inputTurno" class="col-sm-2 col-form-label">Turno:</label>
                             <div class="col-sm-10">
                                 <div>
-                                    <input class="form-check-input " type="radio" name="radioDefault"
-                                        id="radioDefault1">
-                                    <label class="form-check-label" for="radioDefault1"> Manhã </label>
+                                    <input  class="form-check-input" type="radio" name="radioDefault" id="checkBoxManha" value="manha">
+                                    <label class="form-check-label" for="checkBoxManha"> Manhã </label>
                                 </div>
-                                <div class="col-sm-10">
-                                    <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault2"
-                                        checked>
-                                    <label class="form-check-label" for="radioDefault2"> Tarde</label>
+                                <div>
+                                    <input class="form-check-input" type="radio" name="radioDefault" id="checkBoxTarde" value="tarde" checked>
+                                    <label class="form-check-label" for="checkBoxTarde"> Tarde</label>
                                 </div>
-                                <div class="col-sm-10">
-                                    <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault2"
-                                        checked>
-                                    <label class="form-check-label" for="radioDefault2">Noite</label>
+                                <div>
+                                    <input class="form-check-input" type="radio" name="radioDefault" id="checkBoxNoite" value="noite">
+                                    <label class="form-check-label" for="checkBoxNoite"> Noite</label>
                                 </div>
                             </div>
                         </div>
                         <div class="row mb-3 mt-3">
-                            <button type="button" class="col-sm-2 btn btn-primary">Cadastrar</button>
+                            <button type="button" onclick="cadastrarAluno()" class="col-sm-2 btn btn-primary">Cadastrar</button>
                         </div>
+                    </form>
                 </div>
             </div>
-
-            </form>
-            </div>
-            </div>
-
         </section>
         <hr>
         <section>
@@ -94,7 +86,7 @@
             </div>
             <div class="row">
                 <div class="col-md-10 offset-md-1 mt-4">
-                    <table class="table">
+                    <table class="table" id="studentsTable">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -106,25 +98,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Sophia Amorim</td>
-                                <td>sophiavfa@gmail.com</td>
-                                <td>(12)991495485</td>
-                                <td>TI</td>
-                                <td>Noturno</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Pedro Vieira</td>
-                                <td>pedrovieiradecarv@gmail.com</td>
-                                <td>(12)345678901</td>
-                                <td>Direito</td>
-                                <td>Manhã</td>
-                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
+        </section>
     </main>
 
     <footer class="bg-secondary text-center text-white fixed-bottom">
@@ -133,7 +111,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous">
-        </script>
+    </script>
 
     <!-- Mascara -->
     <script>
@@ -141,6 +119,9 @@
             $('#tel').mask('(00) 00000-0000');
         });
     </script>
+
+    <script src="javascript.js"></script>
 </body>
 
 </html>
+
