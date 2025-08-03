@@ -75,7 +75,7 @@ function cadastrarAluno() {
     };
 
     students.push(newStudent);
-    addNewRow(newStudent)
+    addNewRow(newStudent);
 }
 
 
