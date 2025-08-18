@@ -1,5 +1,3 @@
-
-
 var students = [];
 
 var courses = [
@@ -13,49 +11,66 @@ window.onload = function () {
     loadStudents();
 };
 
-
 // Load all students
 function loadStudents() {
+    // Limpa o corpo da tabela (exceto cabeçalho)
+    var tabela = document.getElementById("studentsTable");
+    while (tabela.rows.length > 1) {
+        tabela.deleteRow(1);
+    }
+    
     for (let student of students) {
         addNewRow(student);
     }
 }
 
-
 // Add new row to the table
 function addNewRow(student) {
-    console.log(student)
     var table = document.getElementById("studentsTable");
-    var newRow = table.insertRow();
+    var newRow = table.insertRow(-1); // Insere no final
 
     // ID
-    newRow.insertCell().appendChild(document.createTextNode(student.id));
+    newRow.insertCell(0).textContent = student.id;
 
     // Nome
-    newRow.insertCell().appendChild(document.createTextNode(student.name));
+    newRow.insertCell(1).textContent = student.name;
 
     // Email
-    newRow.insertCell().appendChild(document.createTextNode(student.email));
+    var emailCell = newRow.insertCell(2);
+    emailCell.className = 'd-none d-md-table-cell';
+    emailCell.textContent = student.email;
 
     // Telefone formatado
     var telStr = student.tel.toString();
     var telFormatado = `(${telStr.slice(0, 2)}) ${telStr.slice(2, 7)}-${telStr.slice(7)}`;
-    newRow.insertCell().appendChild(document.createTextNode(telFormatado));
+    var telCell = newRow.insertCell(3);
+    telCell.className = 'd-none d-md-table-cell';
+    telCell.textContent = telFormatado;
 
     // Curso
-    var courseName = courses[student.course - 1].name;
-    newRow.insertCell().appendChild(document.createTextNode(courseName));
+    var courseName = courses.find(c => c.id === student.course).name;
+    var courseCell = newRow.insertCell(4);
+    courseCell.className = 'd-none d-md-table-cell';
+    courseCell.textContent = courseName;
 
     // Turno
-    var shiftBadge = "";
-    if (student.shift == "manha") {
-        shiftBadge = "<span class='badge bg-success'>M</span>";
-    } else if (student.shift == "tarde") {
-        shiftBadge = "<span class='badge bg-primary'>T</span>";
-    } else if (student.shift == "noite") {
-        shiftBadge = "<span class='badge bg-danger'>N</span>";
+    var shiftCell = newRow.insertCell(5);
+    shiftCell.className = 'd-none d-md-table-cell';
+    var shiftBadge = document.createElement('span');
+    shiftBadge.className = 'badge';
+    
+    if (student.shift === "manha") {
+        shiftBadge.classList.add('bg-success');
+        shiftBadge.textContent = 'M';
+    } else if (student.shift === "tarde") {
+        shiftBadge.classList.add('bg-primary');
+        shiftBadge.textContent = 'T';
+    } else if (student.shift === "noite") {
+        shiftBadge.classList.add('bg-danger');
+        shiftBadge.textContent = 'N';
     }
-    newRow.insertCell().innerHTML = shiftBadge;
+    
+    shiftCell.appendChild(shiftBadge);
 }
 
 // Função para cadastrar aluno
@@ -80,3 +95,4 @@ function cadastrarAluno() {
 
     document.getElementById("formStudents").reset();
 }
+
